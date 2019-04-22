@@ -39,8 +39,10 @@
 
 (define-test test-make-your-own-array
     "make your own array that meets the specifications below."
-  (let ((color-cube nil))
+  (let ((color-cube (make-array '(3 3 3) :adjustable nil :fill-pointer nil)))
     "you may need to modify your array after you make it"
+    (setf (aref color-cube 0 1 2) :red)
+    (setf (aref color-cube 2 1 0) :white)
     (if (typep color-cube '(simple-array T (3 3 3)))
         (progn
           (assert-equal 3 (array-rank color-cube))
