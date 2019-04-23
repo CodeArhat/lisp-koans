@@ -56,17 +56,17 @@
 (define-test test-adjustable-array
     "one may build arrays that can change size"
   (let ((x (make-array '(2 2) :initial-element 5 :adjustable t)))
-    (assert-equal (aref x 1 0) ____)
-    (assert-equal (array-dimensions x) ____)
+    (assert-equal (aref x 1 0) 5)
+    (assert-equal (array-dimensions x) '(2 2))
     (adjust-array x '(3 4))
-    (assert-equal (array-dimensions x) ____)))
+    (assert-equal (array-dimensions x) '(3 4))))
 
 
 (define-test test-make-array-from-list
   (let ((x))
     (setf x (make-array '(4) :initial-contents '(:one :two :three :four)))
-    (assert-equal (array-dimensions x) ____)
-    (assert-equal ____ (aref x 0))))
+    (assert-equal (array-dimensions x) '(4))
+    (assert-equal :one (aref x 0))))
 
 
 (define-test test-row-major-index
@@ -76,5 +76,5 @@
     (setf my-array (make-array '(2 2 2 2)))
     (dotimes (i (* 2 2 2 2))
       (setf (row-major-aref my-array i) i))
-    (assert-equal (aref my-array 0 0 0 0) ____)
-    (assert-equal (aref my-array 1 1 1 1) ____)))
+    (assert-equal (aref my-array 0 0 0 0) 0)
+    (assert-equal (aref my-array 1 1 1 1) 15)))
